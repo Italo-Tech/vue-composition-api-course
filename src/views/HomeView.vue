@@ -5,9 +5,11 @@
       <h2>{{ appTitle }}</h2>
       <h3>{{ counterData.title }}:</h3>
 
-      <button @click.prevent="decrement" class="btn">-</button>
+      <button @click.prevent="decrement(1, $event)" class="btn">--</button>
+      <button @click.prevent="decrement(2, $event)" class="btn">-</button>
       <span class="counter">{{ counterData.count }}</span>
-      <button @click.prevent="increment" class="btn">+</button>
+      <button @click.prevent="increment(1, $event)" class="btn">+</button>
+      <button @click.prevent="increment(2, $event)" class="btn">++</button>
     </div>
 
     <div class="edit">
@@ -59,8 +61,6 @@ export default {
 <script setup>
 import { reactive } from "vue";
 
-// const counter = ref(0),
-//     counterTitle = ref('My Counter')
 const appTitle = 'My Amazing Counter App'
 
 const counterData = reactive({
@@ -68,10 +68,12 @@ const counterData = reactive({
   title: 'My Counter'
 })
 
-const increment = () => {
-  counterData.count++
+const increment = (amount, event) => {
+  console.log(event)
+  counterData.count += amount
 }
-const decrement = () => {
+const decrement = (amount, event) => {
+  console.log(event)
   counterData.count--
 }
 
@@ -83,6 +85,7 @@ const decrement = () => {
   padding: 20px;
 }
 .btn, .counter {
+  margin: 0 5px;
   padding: 5px 10px;
   font-size: 20px;
 }
