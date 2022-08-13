@@ -29,6 +29,11 @@ export default {
       counter: 0
     }
   },
+  watch: {
+    count(newCount, oldCount) {
+      if(newCount == 10) alert('Number Ten')
+    }
+  },
   methods: {
     increment() {
       this.counter++
@@ -61,7 +66,7 @@ export default {
 
 <!--SFC <script setup>-->
 <script setup>
-import { reactive, computed } from "vue";
+import { reactive, computed, watch } from "vue";
 
 const appTitle = 'My Amazing Counter App'
 
@@ -74,6 +79,11 @@ const evenOrOdd = computed(() => {
   if(counterData.count == 0) return 'neutro'
   else if(counterData.count % 2 === 0) return 'par';
   return 'ímpar'
+})
+/*Watch*/
+watch(() => counterData.count, (newCount, oldCount) => {
+  if(newCount == 20) return alert('Way to go! You mande it to 20!!')
+  console.log(newCount, oldCount)
 })
 
 const increment = (amount, event) => {
