@@ -75,6 +75,7 @@ export default {
 <script setup>
 /* IMPORTS */
 import { reactive, computed, watch, onMounted, onBeforeMount, onUpdated, onUnmounted, onBeforeUpdate, onBeforeUnmount, onActivated, onDeactivated } from "vue";
+import { vAutofocus } from "@/directives/vAutofocus";
 
 /* APP TITLE */
 const appTitle = 'My Amazing Counter App'
@@ -138,13 +139,6 @@ onActivated(() => {
 onDeactivated(() => {
   console.log('onDeactivated -> Desativa após o componente ser removido do DOM')
 })
-
-/* DIRECTIVES */
-const vAutofocus = {
-  mounted: (el) => {
-    el.focus()
-  }
-}
 </script>
 
 <style>
