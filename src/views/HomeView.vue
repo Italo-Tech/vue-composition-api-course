@@ -16,13 +16,13 @@
 
     <div class="edit">
       <h4>Edit counter title:</h4>
-      <input v-model="counterData.title" type="text">
+      <input v-model="counterData.title" type="text" v-autofocus>
     </div>
   </div>
 </template>
 
 <!--Option API-->
-<script>
+<!--<script>
 export default {
   data() {
     return {
@@ -39,11 +39,18 @@ export default {
       this.counter++
     },
     decrement() {
-      this.counter--
+      this.counter&#45;&#45;
     }
   },
+  directives: {
+    autofocus: {
+      mounted(el) {
+        el.focus()
+      }
+    }
+  }
 }
-</script>
+</script>-->
 
 <!--Composition API-->
 <!--<script>
@@ -131,6 +138,13 @@ onActivated(() => {
 onDeactivated(() => {
   console.log('onDeactivated -> Desativa após o componente ser removido do DOM')
 })
+
+/* DIRECTIVES */
+const vAutofocus = {
+  mounted: (el) => {
+    el.focus()
+  }
+}
 </script>
 
 <style>
